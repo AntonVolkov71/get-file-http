@@ -5,15 +5,15 @@ const server = http.createServer((req, res) => {
 
     if (req.method === 'GET' && req.url === '/download') {
         console.log(req.method,  req.url)
-        const filePath = 'E:\\del\\src\\assets\\Скотт Мейерс - Эффективный и современный С++.pdf';
-        const filename = "Скотт Мейерс - Эффективный и современный С++.pdf"
-        const type = "pdf"
+        const filePath = 'E:\\del\\assets\\Язык программирования С++. Специальное издание [2011] Бьерн Страуструп.djvu';
+        const filename = "C++. Special Edition [2011] by Björn Stroustrup.djvu"
+        const type = "djvu"
 
         fs.exists(filePath, (exists) => {
             if (exists) {
                 res.writeHead(200, {
                     'Content-Type': `application/${type}`,
-                    'Content-Disposition': `attachment; filename="${filename}"`,
+                    'Content-Disposition': `attachment; filename=${filename}`,
                 });
 
                 const readStream = fs.createReadStream(filePath);
